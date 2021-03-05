@@ -26,7 +26,7 @@ class _TimeSelectorState extends State<TimeSelector> {
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
+    return ElevatedButton(
       onPressed: widget.enabled ? widget.onPressed : null,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

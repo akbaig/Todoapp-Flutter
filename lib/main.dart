@@ -65,7 +65,6 @@ class _MainListState extends State<MainList> {
   Widget build(BuildContext context) {
     String mytext;
     void _onReorder(int oldIndex, int newIndex) {
-      print('Old: $oldIndex, New: $newIndex');
       setState(() {
         Task row = myList.removeAt(oldIndex);
         myList.insert(newIndex, row);
@@ -117,7 +116,6 @@ class _MainListState extends State<MainList> {
                 setState(() {
                   if(myList[i].reminderId != null)
                     removeDailyNotification(myList[i].reminderId);
-                  print('Reminder Id ${myList[i].reminderId} removed');
                   myList.removeAt(i);
                   saveFile('content', myList);                  
                 });
@@ -126,20 +124,20 @@ class _MainListState extends State<MainList> {
                 mytext = myList[i].title;
                 showDialog(
                   context: context, 
-                  child: AlertDialog(
+                  builder: (context) => AlertDialog(
                     title: Text('Edit task title'),
                     content: TextField(
                       onChanged: (text) => mytext = text,
                       decoration: InputDecoration(hintText: myList[i].title),
                     ),
                     actions: [
-                      FlatButton( //cancel button
+                      TextButton( //cancel button
                         child: Text('Cancel'),
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
                       ),
-                      FlatButton(
+                      TextButton(
                         child: Text('Save'),
                         onPressed: () {
                           setState(() {
@@ -179,12 +177,12 @@ class _MainListState extends State<MainList> {
     TimeOfDay _time = TimeOfDay.now();
 
     // set up the button
-    Widget cancelButton = FlatButton(
+    Widget cancelButton = TextButton(
       child: Text("Cancel", style: TextStyle(color: Colors.red),),
       onPressed: () => Navigator.of(context).pop(),
     );
 
-    Widget okButton = FlatButton(
+    Widget okButton = TextButton(
       child: Text("Ok"),
       onPressed: () { 
           if(_portions == null || _portions == 0)
@@ -195,7 +193,6 @@ class _MainListState extends State<MainList> {
             if(_switch) scheduleDailyNotification(reminderId, mytext, _time.hour, _time.minute);
             saveFile('content', myList);
             saveFile('reminder_counter', reminderCounter);
-            print('Reminder Counter: $reminderCounter\n');
             Navigator.of(context).pop();
           });
       }

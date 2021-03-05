@@ -36,7 +36,6 @@ Future<dynamic> readFile(String filename) async {
   }
   else 
   {
-    print('File $filename doesn\'t exist');
     return null;
   }
 }

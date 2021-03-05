@@ -23,6 +23,7 @@ class _ColorRadioButtonState extends State<ColorRadioButton> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
+      splashRadius: 18.0,
       icon: CircleAvatar(
         backgroundColor: widget.value == widget.groupValue ? widget.color.withOpacity(0.3) : Colors.white,
         radius: 16.0,

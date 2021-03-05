@@ -25,7 +25,6 @@ Future<void> _configureLocalTimeZone() async {
   try {
       
        timeZoneName = await FlutterNativeTimezone.getLocalTimezone();
-      print('$timeZoneName');
    } on PlatformException {
       timeZoneName = 'America/Detroit';
    }
