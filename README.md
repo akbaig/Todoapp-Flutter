@@ -4,7 +4,7 @@ An unique todoapp which allows to create and manage tasks as well as keep track 
 
 # Screenshots
 
-yet to upload
+![alt text](https://i.imgur.com/vOqX4O7.jpeg)
 
 # Features
 
