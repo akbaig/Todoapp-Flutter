@@ -8,6 +8,6 @@ yet to upload
 
 # Features
 
-Completely offline app
-Reminders (Local push notifications)
-Json implementation on backend
+- Completely offline app
+- Reminders (Local push notifications)
+- Json implementation on backend
