@@ -12,7 +12,6 @@ void main() {
 }
 
 List<Task> myList = <Task>[
-  //Task(progress: 0.6, title: 'Do homework', color: Colors.indigo),
 ];
 
 int reminderCounter = 0;
