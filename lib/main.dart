@@ -74,7 +74,24 @@ class _MainListState extends State<MainList> {
                   }),
             ]),
         body: myList.length == 0
-            ? Center(child: Text('Click icon on corner to add tasks'))
+            ? SizedBox.expand(
+              child: Stack(
+                children: [
+                  Align(
+                    child: Transform.rotate(
+                      angle: -5.9,
+                      child: Image.asset(
+                          'images/arrow.png',
+                          height: 100,
+                          width: 100,
+                        ),
+                    ),
+                    alignment: Alignment.topRight
+                  ),
+                  Align(child: Text('Click icon on corner to add tasks'), alignment: Alignment.center),
+                ],
+              )
+            )
             : ReorderableWrap(
                 alignment: WrapAlignment.spaceBetween,
                 spacing: 4.0,
@@ -158,7 +175,7 @@ class _MainListState extends State<MainList> {
     int _selected = 0;
     bool _switch = false;
     int _portions;
-    String _duration = 'Minutes';
+    String _duration = 'Units';
     bool _custom = false;
     TimeOfDay _time = TimeOfDay.now();
 
@@ -299,7 +316,7 @@ class _MainListState extends State<MainList> {
                     child: TextField(
                       onChanged: (String text) => _portions = int.parse(text),
                       decoration: InputDecoration(
-                        hintText: 'Intervals',
+                        hintText: 'Quantity',
                       ),
                       keyboardType: TextInputType.number,
                     ),
@@ -318,7 +335,7 @@ class _MainListState extends State<MainList> {
                             IconButton(
                               icon: Icon(Icons.undo),
                               onPressed: () => setState(() {
-                                _duration = 'Minutes';
+                                _duration = 'Units';
                                 _custom = false;
                               }),
                             )
@@ -342,6 +359,7 @@ class _MainListState extends State<MainList> {
                             });
                           },
                           items: <String>[
+                            'Units',
                             'Minutes',
                             'Hours',
                             'Days',
